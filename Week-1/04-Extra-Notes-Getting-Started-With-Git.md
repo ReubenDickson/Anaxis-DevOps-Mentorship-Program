@@ -112,11 +112,11 @@ Optional tools (recommended):
 Security tip: Enable Two-factor authentication (2FA) in Settings > Security after you finish setting up. This protects your account.
 
 
-4. Install Git locally on Ubuntu
+4. Install Git locally on Ubuntu (Using Terminal)
 ``` bash
 sudo apt update
 sudo apt install -y git
-Verify installation
+# Verify installation
 git --version
 ```
 
@@ -143,22 +143,27 @@ We'll show both methods. Beginners can start with HTTPS and later add SSH.
 7. Create SSH key and add to GitHub (recommended)
 Generate SSH key (Linux/macOS/Windows Git Bash):
 ``` bash
+cd ~/.ssh
 ssh-keygen -t ed25519 -C "you@example.com”
+# Give your new key a name, eg "github-access-key"
 ```
 
-# If ed25519 not available, use rsa: ssh-keygen -t rsa -b 4096 -C "you@example.com"
 Accept default file location (~/.ssh/id_ed25519) and choose a passphrase (recommended). Then add key to ssh-agent:
 ``` bash
 eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
+# Make your private key readable by you alone
+chmod 600 github-access-key
+ssh-add github-access-key # replace with the name of your 
+# Confirm that your key is loaded
+ssh-add -l
 ```
 Copy public key to clipboard
 Linux/macOS:
 ``` bash
-cat ~/.ssh/id_ed25519.pub | clip  # on some systems use xclip or pbcopy
+cat github-access-key
+# Copy the output
 ```
-# macOS: pbcopy < ~/.ssh/id_ed25519.pub
-# Linux (with xclip): xclip -selection clipboard < ~/.ssh/id_ed25519.pub
+
 Add key on GitHub
 1.	On GitHub, go to Settings > SSH and GPG keys > New SSH key.
 2.	Paste the public key and give it a title (e.g., Laptop - Anaxis).
@@ -185,32 +190,48 @@ You now have an empty repository with a README. We shall return to this later.
 
 9. Initialize local Git repository and push to GitHub (CLI)
 Option A — Clone a GitHub repo and make changes to the files.
-On the GitHub repo page, you'll see the quick setup instructions. Use the HTTPS or SSH clone URL.
+Go to https://github.com/ReubenDickson/dev-ops-portfolio
+Click on the '<> Code' dropdown menu.
+Use the HTTPS or SSH clone URL.
 Using SSH (if set up):
 
-# create a new folder named devops-portfolio and cd to the new folder
+Create a new folder named devops-portfolio on your machine and cd the the folder.
+
 ``` bash
+mkdir devops-portfolio
 cd devops-portfolio
 ```
-# Clone my devops-portfolio repository on Git.
+
+clone Reuben Dickson's devops-portfolio repository.
 ``` bash
 git clone https://github.com/ReubenDickson/dev-ops-portfolio .
 ```
-# Do not ignore the dot at the end of the previous command, it tells the computer to clone the repo into the current directory. You should have the following files in your folder; index.html, README.md, and an ‘images’ folder.
+Do not ignore the dot at the end of the previous command, it tells the computer to clone the repo into the current directory. You should have the following files in your folder; index.html, README.md, and an ‘images’ folder.
 Using HTTPS (if not using SSH):
 ``` bash
 git clone https://github.com/ReubenDickson/dev-ops-portfolio .
 ```
-Now add your photo in the images folder. Edit ‘index.html’ and update the link to point to your photo in the images folder.
+
+If you alread have Visual Studio Code installed, launch it using the command below, or open it using your prefered text editor.
+``` bash
+code .
+```
+
+Now add your photo in the images folder. Edit ‘index.html’ and update the link to point to your photo in the images folder. Find this on Line 156.
+If you have copied your image into the 'images' folder, rename it to 'profile'. Also note your image format whether it's jpg or png. Now edit that line to look like this;
+``` bash
+        <img src="images/profile.jpg" alt="Your name">
+```
+You might also want to update the Linkedln link on line 175 as well as your email address.
+Now go back to your Terminal and make sure you are in the same folder.
+
 ``` bash
 git add .
 git commit -m "Initial commit: my devops-portfolio website"
-# Add remote (get your repo URL from GitHub, the one you created earlier).
-git remote add origin git@github.com:yourusername/devops-portfolio.git
-# or for HTTPS:
-# git remote add origin https://github.com/yourusername/devops-portfolio.git
+# Update git remote origin to now point to your repo instead of mine.
+git remote set-url origin git@github.com:your-username/devops-portfolio.git
 git branch -M main
-git push -u origin main
+git push -u origin main -f
 ```
 If GitHub prompts for credentials for HTTPS, use your GitHub username and a Personal Access Token (PAT) as the password. You can create a PAT in GitHub Settings > Developer settings > Personal access tokens. For repo pushes, repo scope is needed.
 
@@ -219,11 +240,11 @@ If GitHub prompts for credentials for HTTPS, use your GitHub username and a Pers
     1.	On GitHub repo page, you'll now see uploaded files.
     2.	Click README.md to edit and add a short guide about the project, how to run it locally, and credits.
 Example README content:
-# DevOps portfolio Website
+DevOps portfolio Website
 
 A beginner project for getting familiar with Github for DevOps.
 
-## Run locally
+ Run locally
 1. Open `index.html` in your browser.
 Commit README changes directly on GitHub or edit locally and push.
 
@@ -278,20 +299,25 @@ git config --global core.autocrlf input # macOS/Linux
 ```
 
 16. Command cheat sheet (quick reference)
-# Git identity
+ Git identity
 ``` bash
 git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 ```
-# Initialize repo
+
+
+Initialize repo
 ``` bash
 git init
 ```
-# Cloning
+
+
+Cloning
 ``` bash
 git clone git@github.com:yourusername/repository-name.git
 ```
-# Basic workflow
+
+Basic workflow
 ``` bash
 git status
 git add .
