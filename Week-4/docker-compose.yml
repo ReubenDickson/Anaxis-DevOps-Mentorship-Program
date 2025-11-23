@@ -1,0 +1,44 @@
+services:
+  wg-access-server:
+    image: place1/wg-access-server:latest
+    container_name: wg-access-server
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - "/dev/net/tun:/dev/net/tun"
+    volumes:
+      - "wg-access-server-data:/data"
+    environment:
+      - "WG_ADMIN_USERNAME=admin"
+      - "WG_ADMIN_PASSWORD=${WG_ADMIN_PASSWORD}"
+      - "WG_WIREGUARD_PRIVATE_KEY=KNPinQmvaH9gz6XGNSjvNcj9VpXsbcJNd/sRFzKVnGE="
+    ports:
+      - "51820:51820/udp"   # WireGuard tunnel port
+      # no need to expose 8000 anymore — proxied internally
+    networks:
+      - vpn_net
+
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - wg-access-server
+    networks:
+      - vpn_net
+
+volumes:
+  wg-access-server-data:
+  caddy_data:
+  caddy_config:
+
+networks:
+  vpn_net:
+    driver: bridge
