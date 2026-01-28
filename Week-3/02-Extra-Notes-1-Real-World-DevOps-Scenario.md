@@ -68,7 +68,7 @@ A database is a place where data is stored, organized, and managed electronicall
 It stores information in tables (like Excel sheets) so that applications can quickly save, retrieve, and update data.
 
 Example:
-When you log into your bank app, your account number, balance, and transaction history are all stored in a database.
+When you log into your bank app, your account number, balance, and transaction history are all stored and read from a database.
 
 Common databases include:
 
@@ -149,6 +149,10 @@ Step 4 – Use htop for Better Visualization
 Exit top (press q) and launch:
 ``` bash
 htop
+```
+NB: if 'htop' is not installed, install it using the command below;
+``` bash
+sudo snap install htop
 ```
 
 You see:

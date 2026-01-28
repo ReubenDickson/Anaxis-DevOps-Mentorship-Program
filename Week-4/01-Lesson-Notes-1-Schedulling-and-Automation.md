@@ -4,7 +4,7 @@ Learning Objectives
 By the end of this week, students should be able to:
 Understand how automation works in Linux systems
 Schedule recurring tasks using cron
-Schedule one-time jobs using at
+Schedule one-time jobs using 'at'
 Understand and use systemd timers
 Use file redirection and pipes to manage command outputs
 Write and schedule simple bash scripts
@@ -42,9 +42,11 @@ Edit or Create Cron Jobs
 ``` bash
 crontab -e
 ```
+Select an editor, bin/nano is fine.
 
 Cron Time Format
 A cron job follows this structure:
+
 ``` bash
 * * * * * command_to_execute
 ```
