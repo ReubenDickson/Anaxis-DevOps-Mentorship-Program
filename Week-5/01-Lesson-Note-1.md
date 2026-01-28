@@ -178,153 +178,45 @@ Services refuse to start
 
 DevOps engineers never ignore logs.
 
-🗜️ 6. Compression & Archiving — Controlling Growth
-Create a compressed archive
-tar -czvf logs.tar.gz /var/log
 
+
+6. Compression & Archiving - Controlling Growth
+Create a compressed archive
+``` bash
+tar -czvf logs.tar.gz /var/log
+```
 
 Explanation:
 
-c → create
+c - create
 
-z → gzip compression
+z - gzip compression
 
-v → show progress
+v - show progress
 
-f → filename
+f - filename
 
 Restore archive
+``` bash
 tar -xzvf logs.tar.gz -C /tmp/restore
-
+```
 
 If you can’t restore a backup, it is not a backup.
 
-🔁 7. rsync — Professional Backup Tool
+
+
+7. rsync - The professional Backup Tool
 
 Unlike cp, rsync:
 
-Transfers only changes
+- Transfers only changes made to data
 
-Is fast and efficient
+- Is fast and efficient
 
-Works locally and remotely
+- Works locally and remotely
 
+``` bash
 rsync -av /var/log/ /tmp/log_backup/
-
+```
 
 This is industry-grade backup behavior.
-
-🔥 REAL-WORLD DEVOPS PROJECT (WEEK 5 CORE)
-🏗️ Project: Production Log Management & Storage Protection
-🧩 Scenario
-
-You manage a production Ubuntu server for a fintech company.
-Over time, users report slow performance.
-
-Investigation shows:
-
-/var/log is growing uncontrollably
-
-Root filesystem is at 92%
-
-Risk of downtime is high
-
-Your task is to design and implement a storage-safe log system.
-
-🎯 Project Objectives
-
-You must:
-
-Analyze disk usage
-
-Mount additional storage for archives
-
-Compress logs daily
-
-Retain logs for a fixed period
-
-Delete old archives automatically
-
-Prove logs can be restored
-
-🛠️ Implementation (Step-by-Step)
-Step 1 — Analyze
-df -h
-du -sh /var/log
-
-Step 2 — Prepare archive storage
-sudo mkdir -p /mnt/log_archive
-
-
-(Assume disk already mounted or simulate directory)
-
-Step 3 — Backup script
-
-/usr/local/bin/archive_logs.sh
-
-#!/bin/bash
-
-ARCHIVE_DIR="/mnt/log_archive"
-DATE=$(date +%F)
-
-mkdir -p $ARCHIVE_DIR
-tar -czf $ARCHIVE_DIR/logs-$DATE.tar.gz /var/log
-
-Step 4 — Retention policy
-find /mnt/log_archive -type f -mtime +14 -delete
-
-Step 5 — Restore test
-mkdir /tmp/log_restore
-tar -xzvf /mnt/log_archive/logs-YYYY-MM-DD.tar.gz -C /tmp/log_restore
-
-🧠 HOW A DEVOPS ENGINEER THINKS (WEEK 5 CORE)
-
-Storage grows silently — monitor it
-
-Logs are valuable but dangerous
-
-Backups without restore tests are useless
-
-Automation prevents emergencies
-
-Prevention is cheaper than recovery
-
-📁 STUDENT DELIVERABLES
-
-Students must submit:
-
-week5-filesystem-project/
-├── scripts/
-│   └── archive_logs.sh
-├── documentation/
-│   ├── disk_analysis.md
-│   ├── backup_strategy.md
-│   └── restore_procedure.md
-└── README.md
-
-
-With:
-
-Screenshots of disk usage
-
-Archive files created
-
-Restore verification
-
-Clear explanations
-
-✅ WHAT THIS WEEK GIVES STUDENTS
-
-Even if a student stops here, they now understand:
-
-How Linux stores data
-
-Why disks fail
-
-How logs destroy systems
-
-How backups protect uptime
-
-How DevOps engineers think about storage
-
-This is real foundational DevOps knowledge.
