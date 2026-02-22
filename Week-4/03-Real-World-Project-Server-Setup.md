@@ -3,13 +3,14 @@ WEEK 4 REAL-WORLD PROJECT — “Server Setup, User Management, Monitoring & Aut
 
 Small Business Linux Server Setup & Automation Project
 
-🎯 Goal:
+Goal:
 
 Students will simulate setting up and managing a new Linux server for a small business — handling users, security, logs, processes, tasks, and automation.
 
 This project gives them something real and practical to showcase on their GitHub.
 
-🧩 1. PROJECT BACKGROUND
+
+1. PROJECT BACKGROUND
 
 A small company called GreenFarm Analytics purchases a new Linux server (Ubuntu) to manage their business operations.
 
@@ -29,29 +30,32 @@ Create helpful scripts to simplify operations
 
 This is exactly what junior DevOps engineers do in real internships/jobs.
 
-🛠️ 2. WHAT YOU MUST IMPLEMENT
+
+2. WHAT YOU MUST IMPLEMENT
 ✔️ 2.1. Basic Server Setup (Week 1 Skills)
 
 Using Linux commands:
 
 Create a folder structure that looks like this:
 
+``` bash
 /company_data
 /company_data/admin
 /company_data/analytics
 /company_data/interns
-
+```
 
 Create a welcome message script located in /usr/local/bin/welcome.sh
 
 Display system info when run:
 
+``` bash
 echo "Welcome, today is $(date)"
 echo "System uptime:"
 uptime
 echo "Current users logged in:"
 who
-
+```
 
 Add execute permissions for all users.
 
@@ -59,10 +63,12 @@ Add execute permissions for all users.
 
 GreenFarm has the following employees:
 
-Username	Role	Access Needed
-alice	Admin	Full access to all folders
-bob	Analyst	Access to analytics folder
-charlie	Intern	Read-only access to interns folder
+``` bash
+Username	Role	    Access Needed
+alice	    Admin	    Full access to all folders
+bob	        Analyst	    Access to analytics folder
+charlie	    Intern	    Read-only access to interns folder
+```
 
 You must:
 
@@ -74,30 +80,35 @@ Add each user to the right group
 
 Assign permissions:
 
-/company_data/admin → full access for admins
+/company_data/admin - full access for admins
 
-/company_data/analytics → full access for analysts
+/company_data/analytics - full access for analysts
 
-/company_data/interns → read-only for interns
+/company_data/interns - read-only for interns
 
 Set folder permissions using:
 
+``` bash
 chown
 
 chmod
 
 group access (chgrp)
+```
 
 ✔️ 2.3. Process Monitoring & Troubleshooting (Week 3 Skills)
 
 Create a monitoring script:
 
+``` bash
 /usr/local/bin/monitor_processes.sh
+```
 
+``` bash
 #!/bin/bash
 echo "Top 5 CPU Processes:"
 ps -eo pid,comm,%cpu,%mem --sort=-%cpu | head -n 6
-
+```
 
 Make it executable.
 
@@ -105,6 +116,7 @@ Run and save the output to /company_data/admin/system_report.txt using redirecti
 Example:
 
 /usr/local/bin/monitor_processes.sh > /company_data/admin/system_report.txt
+
 
 ✔️ 2.4. Scheduling Daily Tasks (Week 4 Skills)
 
@@ -115,14 +127,16 @@ You must automate:
 Create script:
 /usr/local/bin/cleanup.sh
 
+``` bash
 #!/bin/bash
 find /company_data/interns -type f -mtime +3 -delete
 echo "Cleaned intern files older than 3 days on $(date)" >> /var/log/cleanup.log
-
+```
 
 Schedule it with cron:
-
+``` bash
 0 3 * * * /usr/local/bin/cleanup.sh
+```
 
 2️⃣ A daily report task
 
@@ -130,15 +144,17 @@ Automatically generate a system report:
 
 /usr/local/bin/daily_report.sh
 
+``` bash
 #!/bin/bash
 echo "System Report - $(date)" > /company_data/admin/daily_report.txt
 df -h >> /company_data/admin/daily_report.txt
 free -h >> /company_data/admin/daily_report.txt
-
+```
 
 Cron:
-
+``` bash
 0 6 * * * /usr/local/bin/daily_report.sh
+```
 
 ✔️ 2.5. A Menu-Based Automation Tool (BONUS)
 
@@ -146,6 +162,7 @@ Create a script that gives users a simple menu:
 
 /usr/local/bin/admin_menu.sh
 
+``` bash
 #!/bin/bash
 echo "1. View system uptime"
 echo "2. View top 5 cpu processes"
@@ -157,8 +174,10 @@ case $choice in
     2) /usr/local/bin/monitor_processes.sh;;
     3) tar -czf /tmp/company_backup.tar.gz /company_data;;
 esac
+```
 
-🎓 3. WHAT STUDENTS MUST SUBMIT
+
+3. WHAT YOU MUST SUBMIT
 📁 GitHub Structure
 week1-4-project/
 ├── scripts/
@@ -177,7 +196,7 @@ week1-4-project/
 │
 └── README.md
 
-📸 Screenshots to include:
+Screenshots to include:
 
 Folder structure
 
@@ -191,9 +210,10 @@ Cron jobs
 
 Output of reports
 
-🌟 4. What Students Will Learn (Massive Value)
 
-By completing this project, students master:
+4. What You Will Learn (Massive Value)
+
+By completing this project, you master:
 
 🔹 Week 1
 
