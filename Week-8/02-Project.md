@@ -59,6 +59,8 @@ Verify:
 ``` bash
 docker ps
 curl localhost:8080
+docker volume ls
+docker volume inspect week8-project_redis_data
 ```
 
 5. Test persistence
