@@ -41,71 +41,20 @@ jobs:
       - name: Run container
         run: docker run -d test-image
 
-3️⃣ Trigger the Pipeline
-git add .
-git commit -m "Add CI pipeline"
-git push origin main
 
-4️⃣ Verify Results
+3. Trigger the Pipeline
+``` bash
+git add .
+git config --global user.email "your-email-address"
+git config --global user.name "Your Name"
+git commit -m "Add CI pipeline"
+git branch -M main
+git remote add origin git@github.com:your-git-username/your-repository-name.git
+git push -u origin main
+```
+
+4. Verify Results
 
 Go to GitHub → Actions
 
-Confirm pipeline ran successfully
-
-🧠 HOW A DEVOPS ENGINEER THINKS (WEEK 9)
-
-Every change is risky
-
-Automation reduces risk
-
-CI is mandatory, not optional
-
-Pipelines must be simple and reliable
-
-If it’s not automated, it’s not scalable
-
-📁 STUDENT DELIVERABLES
-week9-cicd-project/
-├── .github/workflows/
-│   └── docker-ci.yml
-├── Dockerfile
-├── README.md
-└── screenshots/
-    └── pipeline-success.png
-
-
-README must explain:
-
-what CI/CD is
-
-what the pipeline does
-
-why automation matters
-
-✅ WHAT WEEK 9 GIVES STUDENTS
-
-By the end of Week 9, students:
-
-understand CI/CD concepts clearly
-
-build a working pipeline
-
-automate Docker builds
-
-read pipeline logs
-
-think in delivery workflows
-
-🔜 Next (Week 10 Options)
-
-We can now proceed to:
-
-Kubernetes fundamentals
-
-CD deployment strategies
-
-Cloud-based CI/CD
-
-Infrastructure as Code (Terraform intro)
-
-Tell me how you want Week 10 structured, and we continue.
+Confirm pipeline ran successfully.
