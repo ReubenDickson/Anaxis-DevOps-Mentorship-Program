@@ -12,6 +12,7 @@ v. One command should bring everything up or down
 
 
 DELIVERABLES
+``` bash
 week8-compose-project/
 ├── docker-compose.yml
 ├── html/
@@ -20,7 +21,7 @@ week8-compose-project/
 │   ├── running-services.png
 │   └── volume-list.png
 └── README.md
-
+```
 
 README must explain:
 

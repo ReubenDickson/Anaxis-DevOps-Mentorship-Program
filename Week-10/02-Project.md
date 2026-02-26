@@ -74,6 +74,7 @@ iv. What risks did you observe?
 Reflection is mandatory.
 
 📁 STUDENT DELIVERABLES
+``` bash
 week10-deployment-project/
 ├── Dockerfile
 ├── app/
@@ -84,3 +85,4 @@ week10-deployment-project/
 │   ├── risks_observed.md
 │   └── rollback_thoughts.md
 └── README.md
+```

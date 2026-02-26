@@ -11,6 +11,7 @@ Pipelines must be simple and reliable
 If it’s not automated, it’s not scalable
 
 YOUR DELIVERABLES
+``` bash
 week9-cicd-project/
 ├── .github/workflows/
 │   └── docker-ci.yml
@@ -18,7 +19,7 @@ week9-cicd-project/
 ├── README.md
 └── screenshots/
     └── pipeline-success.png
-
+```
 
 README must explain:
 
