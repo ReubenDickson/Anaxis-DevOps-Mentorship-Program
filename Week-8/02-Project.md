@@ -17,11 +17,13 @@ You are responsible for containerizing and composing the system.
 Project Tasks
 
 1. Create project structure
+``` bash
 week8-project/
 ├── docker-compose.yml
 ├── html/
 │   └── index.html
 └── README.md
+```
 
 2. Web page
 <h1>Docker Compose App</h1>

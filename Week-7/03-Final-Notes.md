@@ -12,13 +12,14 @@ v. Containers enable modern DevOps workflows
 
 
 DELIVERABLES
+``` bash
 week7-docker-project/
 ├── Dockerfile
 ├── index.html
 ├── screenshots/
 │   └── running-container.png
 └── README.md
-
+```
 
 README must explain:
 

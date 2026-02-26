@@ -14,6 +14,7 @@ v. Reliability is designed, not hoped for
 
 
 DELIVERABLES (to submitted on GitHub, no need to create a new repo, just add to existing and update README file)
+``` bash
 week6-project/
 ├── scripts/
 │   └── check_nginx.sh
@@ -23,7 +24,7 @@ week6-project/
 │   ├── monitoring_strategy.md
 │   └── recovery_test.md
 └── README.md
-
+```
 Include:
 
 - Screenshots
