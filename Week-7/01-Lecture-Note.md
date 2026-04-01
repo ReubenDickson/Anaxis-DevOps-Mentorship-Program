@@ -7,7 +7,7 @@ Before containers existed, deploying applications was painful.
 
 Typical problems:
 
-- “It works on my laptop but not on the server”, a common statment made by application developers.
+- “It works on my laptop but not on the server”, a common statement made by application developers.
 
 - Conflicting software versions
 
@@ -58,7 +58,7 @@ This caused:
 
 - Inconsistent environments
 
-- Containerized Deployment (Modern Way)
+Containerized Deployment (Modern Way)
 
 With Docker:
 
@@ -89,12 +89,13 @@ ii. Containers are much lighter and faster
 
 
 3. Container vs Virtual Machine
-
+``` bash
 Virtual Machine                 	Container
 Full OS                         	Shares host OS
 Heavy	                            Lightweight
 Slow startup	                    Starts in seconds
 Resource-intensive	                Efficient
+```
 
 DevOps Engineers prefer containers because:
 

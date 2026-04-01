@@ -42,13 +42,13 @@ COPY index.html /usr/share/nginx/html/index.html
 
 3. Build Docker image
 ``` bash
-docker build -t my-web-app .
+sudo docker build -t my-web-app .
 ```
 
 
 4. Run the container
 ``` bash
-docker run -d -p 8080:80 my-web-app
+sudo docker run -d -p 8080:80 my-web-app
 ```
 
 5. Verify

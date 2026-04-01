@@ -18,9 +18,9 @@ Project Tasks
 Use your Week 7 or 8 Docker project.
 
 2. Create CI Workflow
-Inside your Week 7 or 8 project, create a new
-.github/workflows/docker-ci.yml
+Inside your Week 7 or 8 project, create a new .github/workflows/docker-ci.yml
 
+``` bash
 name: Docker CI
 
 on:
@@ -40,10 +40,11 @@ jobs:
 
       - name: Run container
         run: docker run -d test-image
-
+```
 
 3. Trigger the Pipeline
 ``` bash
+git init
 git add .
 git config --global user.email "your-email-address"
 git config --global user.name "Your Name"

@@ -1,5 +1,4 @@
-WEEK 10 — Application Deployment & Environment Management
-What “Deployment” Really Means in the Real World
+WEEK 10 — Application Deployment & Environment Management: What “Deployment” Really Means in the Real World
 
 Week 10 Purpose
 
@@ -33,6 +32,10 @@ v. why DevOps engineers treat production differently
 
 This week reshapes how you think about change.
 
+``` bash
+___
+```
+
 1. What Is Deployment? (Correct Definition)
 
 Deployment is the controlled process of making a new version of software available to users.
@@ -43,7 +46,7 @@ Deployment is NOT:
 
 - restarting containers
 
-- running docker run
+- running "docker run"
 
 - pushing code blindly
 
@@ -52,12 +55,11 @@ Deployment IS a planned change with user impact that must be safe, reversible, a
 DevOps engineers think in deployment events, not commands.
 
 
-DevOps Thinking
+DevOps Thinking: Every deployment is a risk. The job is to control that risk.
 
-Every deployment is a risk.
-The job is to control that risk.
-
-
+``` bash
+___
+```
 
 2. Why Environments Exist
 
@@ -72,12 +74,15 @@ Environment                    Purpose
 ```
 Why this matters
 i. Bugs are caught before users see them
+
 ii. Configuration differs per environment
 
 Mistakes in dev must never reach prod directly.
+``` bash
+___
+```
 
-
-3. Environment ≠ Code (Critical Concept)
+3. Environment is not equal to Code (Critical Concept)
 
 A common beginner mistake: “If the code is the same, the environment doesn’t matter.”
 
@@ -87,23 +92,29 @@ Environments differ by:
 i. ports
 
 ii. database URLs
+
 iii. API keys
+
 iv. logging levels
+
 v. resource limits
 
 This is called configuration drift.
 
-DevOps Thinking:
-Code should not change per environment.
+DevOps Thinking: Code should not change per environment.
 Configuration should.
-
+``` bash
+___
+```
 
 4. Externalizing Configuration
 
 In DevOps, configuration must be:
 
 i. outside the application
+
 ii. injected at runtime
+
 iii. environment-specific
 
 Example (Docker)
@@ -114,7 +125,9 @@ Same image.
 Different behavior.
 
 This is how real deployments work.
-
+``` bash
+___
+```
 
 5. Manual Deployment: What Can Go Wrong
 
@@ -138,7 +151,9 @@ iv. no audit trail
 
 This is why DevOps engineers plan deployments, not rush them.
 
-
+``` bash
+___
+```
 
 6. Deployment Responsibility Shift
 

@@ -37,15 +37,15 @@ iv. protect production systems
 
 
 
-1. The Problem CI/CD Solves (Real-World Context)
+1. The Problem CI/CD Solves (Real-World Context): CI/CD (Continuous Integration/Continuous Deployment) solves the problem of slow, manual and error-prone software delivery. It eliminates "integration hell", where merging codes causes conflicts by automating testing and deployment, allowing trams to deliver high quality, reliable software faster and more frequently.
 
 Without CI/CD
 
-- Manual deployments
+- deployments are done manually.
 
-- Inconsistent steps
+- steps are inconsistent.
 
-- “It worked yesterday”
+- “It worked yesterday” problems.
 
 - Production outages
 
@@ -63,7 +63,9 @@ With CI/CD
 
 CI/CD turns deployment from an event into a routine.
 
-
+``` bash
+___
+```
 
 2. Understanding CI vs CD (Plain Language)
 
@@ -73,24 +75,20 @@ Continuous Integration (CI)
 
 - Code is automatically built, tested and validated.
 
-Goal:
+Goal: Catch problems early.
 
-i. Catch problems early.
+Continuous Deployment (CD)
 
-ii. Continuous Deployment (CD)
+- Code that passes CI is packaged and deployed automatically.
 
-iii. Code that passes CI is packaged and deployed automatically.
-
-Goal:
-
-Release safely and consistently.
+Goal: Release safely and consistently.
 
 
-DevOps Thinking:
-Humans write code.
-Machines deploy it.
+DevOps Thinking: Humans write code. Machines deploy it.
 
-
+``` bash
+___
+```
 
 3. Tools in the CI/CD Ecosystem
 
@@ -112,7 +110,9 @@ For this program, we’ll use GitHub Actions because:
 
 - it requires no extra servers
 
-
+``` bash
+___
+```
 
 4. The CI/CD Pipeline Concept
 
@@ -132,7 +132,9 @@ Deploy
 
 Each step must succeed before the next runs.
 
-
+``` bash
+___
+```
 
 5. Your First CI Pipeline (Conceptual First)
 
@@ -146,7 +148,9 @@ When code is pushed:
 
 This is automation applied to software delivery.
 
-
+``` bash
+___
+```
 
 6. Creating a GitHub Actions Workflow
 
@@ -156,6 +160,14 @@ Project structure
 └── workflows/
     └── ci.yml
 ```
+
+- Create the directory and files
+``` bash
+mkdir .github
+mkdir .github/workflows
+sudo nano .github/workflows/ci.yml
+```
+- Add the contents below to the 'ci.yml' file.
 
 ci.yml (Simple CI Example)
 ``` bash

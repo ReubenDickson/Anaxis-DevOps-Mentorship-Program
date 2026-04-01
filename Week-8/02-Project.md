@@ -25,9 +25,10 @@ week8-project/
 └── README.md
 ```
 
-2. Web page
-<h1>Docker Compose App</h1>
-<p>This app runs multiple services.</p>
+2. Web page: Add content to the html file
+``` bash
+echo "Welcome to Docker Compose" > html/index.html
+```
 
 3. docker-compose.yml
 ``` bash
@@ -61,6 +62,7 @@ Verify:
 ``` bash
 docker ps
 curl localhost:8080
+Expected output: Welcome to Docker Compose
 docker volume ls
 docker volume inspect week8-project_redis_data
 ```
