@@ -243,7 +243,7 @@ sudo docker login
 - Build the app into a Docker Image
 
 ``` bash
-sudo docker buidl -t your-dockerhub-user-name/react-app:v1 .
+sudo docker build -t your-dockerhub-user-name/react-app:v1 .
 ```
 
 NB: Do not ignore the dot '.' at the end of the above command. It tells Docker to look in the current directory to build your Image.
