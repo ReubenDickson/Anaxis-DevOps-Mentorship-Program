@@ -149,3 +149,94 @@ Verify:
 
 Minikube is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.
 See Minikube documentation here: https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download
+
+
+Step-by-step Process to Install and Get Started With Minikube
+
+System Requirements
+
+``` bash
+Minimum Specs
+CPU: 2 cores
+RAM: 4GB (recommended 8GB)
+Disk: 20GB free
+OS: Ubuntu 22.04 / 24.04
+```
+
+Recommended Setup (Docker Driver)
+
+Step 1 — Install Docker (You probably already have Docker installed)
+
+``` bash
+sudo apt update
+sudo apt install -y docker.io
+```
+
+Start and enable:
+``` bash
+sudo systemctl enable docker
+sudo systemctl start docker
+```
+
+Add user to docker group:
+``` bash
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+Verify:
+``` bash
+docker run hello-world
+```
+
+Step 2 — Install kubectl
+
+``` bash
+curl -LO https://dl.k8s.io/release/v1.35.1/bin/linux/amd64/kubectl
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+```
+Verify:
+
+``` bash
+kubectl version --client
+```
+
+Step 3 — Install Minikube
+``` bash
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+```
+
+Verify:
+``` bash
+minikube version
+```
+
+Step 4 — Start Minikube (Docker Driver)
+``` bash
+minikube start --driver=docker --memory=4096 --cpus=2
+```
+
+Step 5 — Verify Cluster
+``` bash
+kubectl get nodes
+kubectl get pods -A
+```
+Expected:
+``` bash
+minikube   Ready
+```
+
+Step 6 — Enable Essential Addons
+``` bash
+minikube addons enable storage-provisioner
+minikube addons enable default-storageclass
+```
+
+Step 7 — Test Deployment
+``` bash
+kubectl create deployment nginx --image=nginx
+kubectl expose deployment nginx --type=NodePort --port=80
+minikube service nginx
+```
