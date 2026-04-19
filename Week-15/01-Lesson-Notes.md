@@ -196,15 +196,51 @@ kubectl apply -f nginx-service.yaml
 
 Now traffic flows through the Service to Pods.
 
+9. View Running Pods Using Port Forwarding (Temporal)
+This creates a temporary tunnel from your computer directly to a specific Pod. Great for debuggung, but this is a temporay solution.
+
 ``` bash
-9. Service Types (Simplified)
+kubectl port-forward pod-name 8080:80
 ```
+
+Now view running pod on your browser - localhost:8080
+You can repeat this for other pods using 8081 and 8082 respectively. However in a production environment with probably thousands of pods, that would be a lot of manual work, and that is where Service comes in.
+
+
+10. Service Types (Simplified)
 
 ``` bash
 Type            Purpose
 ClusterIP       Internal communication
 NodePort        Expose service via node port
 LoadBalancer    External cloud load balancer
+```
+
+A Service acts as a single front door (one IP or DNS name). When traffic hits that door, the service automatically balances the load across all pods in your deployment. If one pod goes down, the Service just sends traffic to the healthy ones.
+
+ClusterIP (The Internal Door)
+This is the default type. It gives the Service an IP address that is only reachable from within the cluster. It is best for databases or internal microservices that shouldn't be exposed to the public internet.
+
+NodePort (The External Side-Door)
+This opens a specific port (usually between 30000-32767) on every single Node (server) in your cluster. If you visit "NodeIP:Port", you will reach your app. This is best for testing or in evironments where you don't need a load balancer.
+
+Load Balancer (The Front Gate)
+This is the "pro" way to do it. If you're on a cloud provider (like AWS or Azure), Kubernetes will talk to the cloud API and provision a real public IP address for you. This is best for production websites and public-facing applications.
+
+``` bash
+kubectl get deployments
+kubectl expose deployment nginx-deployment --type=NodePort --port=80
+kubectl get service
+```
+
+Confirm that your Service can find your Pods, you should see a list of IP addresses.
+``` bash
+kubectl get endpoints nginx-service
+```
+
+Now see your app running on your browser by following the URL from the command below.
+``` bash
+minikube service nginx-service
 ```
 
 For learning environments we often use NodePort.
